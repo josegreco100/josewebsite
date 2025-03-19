@@ -1,34 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose's Website</title>
+    <!-- Using the latest SDK version   -->
+    <script src="https://web-sdk-cdn.singular.net/singular-sdk/latest/singular-sdk.js"></script>
+</head>
 <body>
     <h1>Welcome to My Website</h1>
     <button onclick="trackEvent()">Track Event</button>
 
-    <!-- Load Singular Web SDK -->
-    <script src="https://web-sdk.singular.net/v1/sdk.js"></script>
-
     <script>
-        // Initialize Singular SDK
-        const config = new SingularConfig("se_team_9b3431b0", "bcdee06e8490949422c071437da5c5ed", "online.josewebsite");
 
-        function initSingular() {
-            if (typeof SingularSDK !== 'undefined') {
-                const singularSdk = new SingularSDK();
-                singularSdk.init(config);
-                console.log("Singular SDK initialized");
-            } else {
-                console.error("Singular SDK failed to load.");
-            }
-        }
+      const config = new SingularConfig("se_team_9b3431b0", "bcdee06e8490949422c071437da5c5ed", "online.josewebsite");
 
+     function initSingular() {
+    singularSdk.init(config);
+}
         function trackEvent() {
-            if (typeof singularSdk !== 'undefined') {
-                singularSdk.event("ButtonClicked");
-                console.log("Event tracked: ButtonClicked");
-            } else {
-                console.error("Singular SDK is not initialized.");
-            }
+            Singular.event("TestEvent", { param1: "value1" });
+            alert("Event Tracked!");
         }
-
-        // Initialize Singular when page loads
-        window.onload = initSingular;
     </script>
 </body>
+</html>
