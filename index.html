@@ -4,26 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jose's Website</title>
-    <!-- Using the latest SDK version   -->
-    <script src="https://web-sdk-cdn.singular.net/singular-sdk/latest/singular-sdk.js">
-</script>
+    <!-- Using the latest SDK version -->
+    <script src="https://web-sdk-cdn.singular.net/singular-sdk/latest/singular-sdk.js"></script>
 </head>
 <body>
     <h1>Welcome to My Website</h1>
     <button onclick="trackEvent()">Track Event</button>
 
     <script>
-        const singularConfig = {
-            apiKey: "se_team_9b3431b0",
-            appId: "bcdee06e8490949422c071437da5c5ed",
+        // Wait until the SDK is fully loaded
+        window.onload = function() {
+            const singularConfig = {
+                apiKey: "se_team_9b3431b0",
+                appId: "bcdee06e8490949422c071437da5c5ed",
+            };
+
+            // Initialize Singular SDK
+            Singular.init(singularConfig);
+
+            // Function to track events
+            window.trackEvent = function() {
+                Singular.event("TestEvent", { param1: "value1" });
+                alert("Event Tracked!");
+            };
         };
-
-        Singular.init(singularConfig);
-
-        function trackEvent() {
-            Singular.event("TestEvent", { param1: "value1" });
-            alert("Event Tracked!");
-        }
     </script>
 </body>
 </html>
