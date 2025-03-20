@@ -9,7 +9,6 @@
 </head>
 <body>
     <h1>Welcome to My Website</h1>
-    <button onclick="trackEvent()">Track Event</button>
 
     <script>
 
@@ -18,10 +17,6 @@
      function initSingular() {
     singularSdk.init(config);
 }
-        function trackEvent() {
-            Singular.event("TestEvent", { param1: "value1" });
-            alert("Event Tracked!");
-        }
     </script>
 </body>
 </html>
